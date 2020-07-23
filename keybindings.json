@@ -1,0 +1,14 @@
+// Place your key bindings in this file to override the defaults
+[
+  {
+    "key": "ctrl+y",
+    "command": "workbench.action.tasks.runTask",
+    "args": "Run USS shell"
+  },
+  {
+    "key": "ctrl+shift+c",
+    "command": "workbench.action.tasks.runTask",
+    "when": "editorTextFocus",
+    "args": "Compile COBOL"
+  }
+]

@@ -1,0 +1,73 @@
+{
+  // See https://go.microsoft.com/fwlink/?LinkId=733558
+  // for the documentation about the tasks.json format
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Run USS shell",
+      "type": "shell",
+      // if someone has the logic in a shell script
+      "command": "./BPXBATCH.sh",
+      "windows":{
+        "options": {
+          "cwd": "${workspaceFolder}"
+        },
+        "command": "powershell",
+        // Profile is taken from the params.json file
+        // "args": ["-noprofile","-File","BPXBATCH.ps1","\"${file}\""]
+        // You get prompted for profile from a specific list (see below)
+        "args": ["-noprofile","-File","BPXBATCH.ps1","\"${file}\"", "${input:pickZosmfProfile}"]
+        // You get prompted for profile from a specific list (see below)
+        // "args": ["-noprofile","-File","BPXBATCH.ps1","\"${file}\"", "${input:promptZosmfProfile}"]
+      },
+      "presentation": {
+        "echo": false,
+        "reveal": "always",
+        "focus": false,
+        "panel": "shared",
+        "showReuseMessage": true,
+        "clear": false
+      }
+    },
+    {
+      "label": "Compile COBOL",
+      "type": "shell",
+      "command": "./CBLCOMP.sh",
+      "windows":{
+        "options": {
+          "cwd": "${workspaceFolder}"
+        },
+        "command": "powershell",
+        "args": ["-noprofile","-File","CBLCOMP.ps1","\"${file}\""]
+        // "args": ["-noprofile","-File","CBLCOMP_remote.ps1","\"${file}\"", "${input:pickZosmfProfile}"]
+        // "args": ["-noprofile","-File","CBLCOMP_remote.ps1","\"${file}\"", "${input:promptZosmfProfile}"]
+      },
+      "presentation": {
+        "echo": false,
+        "reveal": "always",
+        "focus": false,
+        "panel": "shared",
+        "showReuseMessage": true,
+        "clear": false
+      }
+    },
+  ],
+  "inputs": [
+    {
+      "type": "pickString",
+      "id": "pickZosmfProfile",
+      "description": "What z/OSMF profile to use for test?",
+      "options": [
+        "zTrial",
+        "learnCOBOL",
+        ],
+      "default": "zTrial"
+    },
+    {
+      "type": "promptString",
+      "id": "promptZosmfProfile",
+      "description": "z/OSMF profile to use for test:",
+      "default": "zTrial"
+    },
+  ]
+}

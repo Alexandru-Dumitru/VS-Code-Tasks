@@ -1,0 +1,41 @@
+{
+	"bpxbatch": {
+		"jobCard" : {
+			"jobname": "",
+			"account": "",
+			"username": "",
+			"notify": "&SYSUID",
+			"class": "",
+			"priority": "",
+			"msgclass": "",
+			"msglevel": "",
+			"typrun": "",
+			"time": "",
+			"region": ""
+		},
+		"keepSpool": "false",
+		"defaultStdout": "\\XBATCH\\STDOUT.txt",
+		"defaultProfile": "zTrial",
+		"outputJcl": "output.jcl"
+	},
+	"cblcomp": {
+		"jobCard" : {
+			"jobname": "",
+			"account": "1",
+			"username": "",
+			"notify": "&SYSUID",
+			"class": "",
+			"priority": "",
+			"msgclass": "",
+			"msglevel": "",
+			"typrun": "",
+			"time": "",
+			"region": ""
+		},
+		"keepSpool": "true",
+		"defaultStdout": "\\GO\\PAYROLL\\SYSOUT.txt",
+		"prtline": "\\RUN\\PRTLINE.txt",
+		"defaultProfile": "LearnCOBOL",
+		"outputJcl": "output.jcl"
+	}
+}
