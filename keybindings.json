@@ -10,5 +10,11 @@
     "command": "workbench.action.tasks.runTask",
     "when": "editorTextFocus",
     "args": "Compile COBOL"
-  }
+  },
+  {
+    "key": "ctrl+shift+r",
+    "command": "workbench.action.tasks.runTask",
+    "when": "editorTextFocus",
+    "args": "Run TSO REXX"
+  },
 ]

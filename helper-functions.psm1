@@ -1,5 +1,4 @@
 # Extracting the remote file path from local file downloaded by Zowe Explorer
-# ! This is used for z/OS UNIX paths
 function Get-Remote_FilePath {
     param (
         [Parameter(Mandatory=$true)] [String]$localFilePath
@@ -9,10 +8,24 @@ function Get-Remote_FilePath {
     $parentArray = $parent.Split("\")
     # _U_ is the default folder where zowe explorer puts Unix files
     # _D_ is the default folder where zowe explorer puts datasets files
-    $idx = $parentArray.IndexOf("_U_") 
+    $idxU = $parentArray.IndexOf("_U_") 
+    $idxD = $parentArray.IndexOf("_D_")
+
+    # for datasets, we need just the dataset name without the file extension
+    if ($idxD -ne -1) {
+        return (Get-Item $localFilePath).BaseName
+    }
+
+    if ($idxU -ne -1) {
+        $idx = $idxU
+    } else {
+        throw "$localFilePath is not downloaded from Zowe Explorer"
+    }
+
     $subArray = $parentArray[($idx + 1)..($parentArray.Count-1)]
     $ofs = "/"
-    # remove system name
+    
+    # remove system name 
     $remoteParentPath = $subArray.Split("/")[1..$subArray.Count]
     # construct remote file path
     $fileName = Split-Path $localFilePath -Leaf

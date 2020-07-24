@@ -4,6 +4,37 @@
   "version": "2.0.0",
   "tasks": [
     {
+      "label": "Run TSO REXX",
+      "type": "shell",
+      "windows": {
+          "options": {
+              "cwd": "${workspaceFolder}"
+          },
+          "command": "powershell",
+          // "args": [
+          //     "-noprofile",
+          //     "-File",
+          //     "BPXBATCH.ps1",
+          //     "\"${file}\"",
+          //     "${input:zosmfProfile}"
+          // ]
+          "args": [
+              "-noprofile",
+              "-File",
+              "TSOREXX.ps1",
+              "\"${file}\"",
+          ]
+      },
+      "presentation": {
+          "echo": false,
+          "reveal": "always",
+          "focus": false,
+          "panel": "shared",
+          "showReuseMessage": true,
+          "clear": false
+      }
+    },
+    {
       "label": "Run USS shell",
       "type": "shell",
       // if someone has the logic in a shell script

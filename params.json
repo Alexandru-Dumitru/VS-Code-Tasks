@@ -37,5 +37,9 @@
 		"prtline": "\\RUN\\PRTLINE.txt",
 		"defaultProfile": "LearnCOBOL",
 		"outputJcl": "output.jcl"
-	}
+	},
+	"tsorexx": {
+        "zosmfProfile": "de20",
+        "tsoProfile": "de20"
+    }
 }
