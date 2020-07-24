@@ -17,4 +17,10 @@
     "when": "editorTextFocus",
     "args": "Run TSO REXX"
   },
+  {
+    "key": "ctrl+alt+r",
+    "command": "workbench.action.tasks.runTask",
+    "when": "editorTextFocus",
+    "args": "Run Interactive TSO REXX"
+  },
 ]
