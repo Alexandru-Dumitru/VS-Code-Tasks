@@ -31,7 +31,7 @@ if  ($args[1]) {
 
 # Zowe CLI command to submit a dataset and get back the spool files
 # --directory . - signals the command to download all spool files in current directory
-# --rfj`        - gets the return of the command in JSON format
+# --rfj         - gets the return of the command in JSON format
 # --zosmf-p     - z/OSMF profile to use when submitting the command  
 $output = zowe jobs submit ds $fullMemberName --directory . --rfj --zosmf-p $profile | ConvertFrom-JSON
 
