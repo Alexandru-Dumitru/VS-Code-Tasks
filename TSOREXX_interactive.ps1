@@ -39,11 +39,13 @@ if ($null -ne $addressSpaceKey ) {
 
     # Run a loop to sequentially reply to all prompts
     # Make sure the number of prompts matches the number of inputs in your array
-    
+
     foreach ($input in $params.tsorexx.inputs) {
         Write-Host "INPUT: $($input)"
         $tempOutput = zowe tso send address-space $addressSpaceKey --data "$($input)" --zosmf-p $zosmfProfile --rfj | ConvertFrom-JSON
         Checkpoint-ErrorHandling -output $tempOutput
+        # Break the loop so we don't use the second input (to match the behavior in the REXX script)
+        if ($tempOutput.stdout -ne "HELLO ALEX, HOW OLD ARE YOU?`n`n") {Break}
     }
 } else {
     throw "Opening TSO address space failed!"
