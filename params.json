@@ -41,7 +41,6 @@
 	"tsorexx": {
         "zosmfProfile": "de20",
 		"tsoProfile": "de20",
-		"input1": "Alex",
-		"input2": "33"
+		"inputs": ["Alex", "33"]
     }
 }

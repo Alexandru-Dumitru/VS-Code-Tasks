@@ -66,6 +66,34 @@ function Remove-Files {
     }
 }
 
+function Checkpoint-ErrorHandling {
+    param (
+        [Parameter(mandatory=$true)]  [Object]$output
+    )
+    # Zowe command error handling
+    if ($null -ne $output -And $output.exitCode -ne 0) {
+        throw $($output.message)
+    }
+
+    # REXX error handling
+    $RCregex = '(RC\(-\d\))'
+    $RCcoderegex = '-\d'
+    $hasRCinOutput = [regex]::match($output.stdout,$RCregex).Groups[1].Success
+    $value = [regex]::match($output.stdout,$RCregex).Groups[1].Value
+    $RC = [regex]::match($value,$RCcoderegex).Value
+    if (-Not $hasRCinOutput) {
+        Write-Host $output.stdout
+    } else {
+        Write-Host
+        Write-Host "Return Code: $($RC)"
+        Write-Host "Full output:"
+        Write-Host
+        Write-Host $output.stdout
+        throw "REXX in error." 
+    }
+}
+
+Export-ModuleMember -Function Checkpoint-ErrorHandling
 Export-ModuleMember -Function Get-Remote_FilePath
 Export-ModuleMember -Function Get-Member_Name
 Export-ModuleMember -Function Remove-Files

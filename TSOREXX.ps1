@@ -22,6 +22,10 @@ if  ($args[2]) {
 $rexxFile = Get-Remote_FilePath -localFilePath $args[0]
 
 # Zowe CLI command to run a REXX script in a TSO address space
+# --ssm     : supresses startup messages
+# --rfj     : returns the output in JSON format
+# --zosmf-p : z/OSMF profile to use for authentication
+# --tso-p   : TSO profile to use when creating the TSO address space
 $output = zowe tso issue command "exec '$rexxFile'" --ssm --rfj --zosmf-p $zosmfProfile --tso-p $tsoProfile | ConvertFrom-JSON
 
 # Basic error handling
