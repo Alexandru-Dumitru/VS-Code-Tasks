@@ -1,5 +1,7 @@
 # VS-Code-Tasks
 
+> ⚠️ No longer maintained. Archived and kept for reference only. ⚠️
+
 ## How to use VS Code Tasks to simplify writing and testing z/OS Unix Shell scripts
 
 As a developer, I want to write and execute a z/OS Unix shell script in VS Code without leaving the editor.
